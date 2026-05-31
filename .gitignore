@@ -1,0 +1,21 @@
+﻿# Vivado clutter â€” never commit these
+*.jou
+*.log
+*.str
+.Xil/
+*.cache/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+*.gen/
+xsim.dir/
+
+# OS clutter
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.backup
+*.bak
+*~
