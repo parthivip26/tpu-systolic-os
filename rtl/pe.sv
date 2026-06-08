@@ -19,13 +19,13 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-// ============================================================
+
 // pe.sv - Processing Element for OUTPUT-STATIONARY INT16 TPU
 //   - Accumulator stays inside the PE
 //   - Activations flow left?right
 //   - Weights flow top?bottom
 //   - Both pass-throughs are registered (1-cycle delay = systolic skew)
-// ============================================================
+
 module pe #(
     parameter int DATA_W = 16,
     parameter int ACC_W  = 32
@@ -53,12 +53,12 @@ module pe #(
             a_out   <= '0;
             b_out   <= '0;
         end else begin
-            // ---- Pass-throughs: a moves right, b moves down (1-cycle delay) ----
+            //Pass-throughs: a moves right, b moves down (1-cycle delay)
             a_out <= a_in;
             b_out <= b_in;
 
-            // ---- Accumulator ----
-            // acc_clear takes priority: lets us start a fresh matmul without full reset
+            // Accumulator
+            // acc_clear takes priority: fresh matmul without full reset
             if (acc_clear) acc_reg <= '0;
             else           acc_reg <= acc_reg + (a_in * b_in);
         end
